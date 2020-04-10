@@ -22,7 +22,7 @@ const options = {
   useNewUrlParser: true,
   useUnifiedTopology: true
 };
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/workouts', options);
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://gurt:rhino36@ds157325.mlab.com:57325/heroku_sjtt6530', options);
 
 // Set app to listen on PORT
 const PORT = process.env.PORT || 3000;
