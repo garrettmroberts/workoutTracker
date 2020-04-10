@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+require('dotenv').config();
 
 //Initializes app
 const app = express();
@@ -22,7 +23,7 @@ const options = {
   useNewUrlParser: true,
   useUnifiedTopology: true
 };
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://gurt:rhino36@ds157325.mlab.com:57325/heroku_sjtt6530', options);
+mongoose.connect(process.env.MONGODB_URI || process.env.DBCONNECTION, options);
 
 // Set app to listen on PORT
 const PORT = process.env.PORT || 3000;
