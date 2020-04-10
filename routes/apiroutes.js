@@ -29,7 +29,6 @@ router.put('/api/workouts/:id', (req, res) => {
     }
   },
   (err, data) => {
-    console.log(req.body)
     res.send(data)
   });
 });
@@ -41,14 +40,23 @@ router.post('/api/workouts', ({ body }, res) => {
   db.workouts.insert(workout, (err, result) => {
     if (err) {
       console.log(err);
+      res.send(err);
     } else {
-      console.log(result);
       res.send(result)
     };
   });
 });
 
-router.get('/api/workouts/:range', (req, res) => {
+// Returns all workouts within a given range
+router.get('/api/workouts/:range', ({ params }, res) => {
+  db.workouts.find({}, (err, result) => {
+    if (err) {
+      console.log(err);
+      res.send(err);
+    } else {
+      res.send(result)
+    }
+  })
 });
 
 module.exports = router;
